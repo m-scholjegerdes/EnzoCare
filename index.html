@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EnzoCare</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <main class="app-container">
+                
+            <h1>EnzoCare</h1>
+            <h2>Gesundheitstagebuch bei Morbus Addison </h2>
+            
+
+            <!-- Auswahlfelder -->
+            <form id="entryForm">
+                <div class="button-grid">
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Spritze">
+                        <img src="buttons/spritze.png" alt="Spritze">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Medikamente">
+                        <img src="buttons/medikamente.png" alt="Medikamente">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Arztbesuch">
+                        <img src="buttons/arztbesuch.png" alt="Arztbesuch">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Zittern">
+                        <img src="buttons/zittern.png" alt="Zittern">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Stress">
+                        <img src="buttons/stress.png" alt="Stress">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Blasenschwäche">
+                        <img src="buttons/blasenschwaeche.png" alt="Blasenschwäche">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Verlängertes Wasserlassen">
+                        <img src="buttons/verlaengertes-wasserlassen.png" alt="Verlängertes Wasserlassen">
+                    </label>
+
+                    <label class="image-option">
+                        <input type="checkbox" value="Trinkverhalten">
+                        <img src="buttons/trinkverhalten.png" alt="Trinkverhalten">
+                    </label>
+                </div>
+
+                <!-- Notizfeld-->
+                <textarea id="note" placeholder="Notizen..."></textarea>
+
+               <div id="errorMessage"></div>
+              
+                <div class="action-buttons">
+                    <!-- Speicherbutton-->
+                    <button type="submit">
+                        Speichern
+                    </button>
+            
+                    <!-- Anzeigebutton -->
+                    <button type="button" onclick="window.location.href='entries.html'">
+                        Einträge anzeigen
+                    </button>
+
+                </div>
+            </form>
+        </main>
+
+        <script src="script.js"></script>
+
+    </body>
+</html>

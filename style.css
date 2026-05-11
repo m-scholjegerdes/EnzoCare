@@ -1,0 +1,380 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #f6f2ea;
+}
+
+.app-container {
+    width: 100%;
+
+    max-width: 470px;
+
+    margin: 0 auto;
+
+    overflow: visible;
+
+    padding:
+        clamp(12px, 2vw, 28px);
+}
+
+h1 {
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+    color:  #064E3B;
+    font-size:
+        clamp(40px, 6vw, 54px);
+}
+
+h2 {
+    margin: 0 0 10px;
+    padding-bottom: 5px;
+    text-align: center;
+    color: #0d4f3c;
+    font-size: 14px;
+}
+
+h3 {
+    margin: 0 0 20px;    
+    padding-top: 10px;
+    text-align: center;
+    color:  #064E3B;
+    font-size:
+        clamp(40px, 6vw, 54px);
+}
+
+p{
+    color: #0d4f3c;
+    font-size: 14px;
+}
+
+.button-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.image-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.image-option img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    display: block;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.image-option input:checked + img {
+    border-color: #ffffff;
+    outline: 4px solid #0d4f3c;
+    transform: scale(0.98);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 35px;
+    width: 100%;
+    margin-top: 0;
+}
+
+.action-buttons button {
+
+    flex: 1;
+
+    padding: 14px 10px;
+
+    border: none;
+    border-radius: 18px;
+
+    background: linear-gradient(
+
+        #064E3B,
+        #064e3bec
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    box-shadow:
+        0 4px 10px rgba(6, 78, 59, 0.18);
+}
+
+.action-buttons button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(6, 78, 59, 0.22);
+}
+
+.action-buttons button:active {
+
+    transform: scale(0.98);
+}
+
+#errorMessage {
+
+    min-height: 0;
+
+    margin: 0;
+
+    text-align: center;
+
+    color: #941615;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+#errorMessage:not(:empty) {
+
+    margin-bottom: 14px;
+}
+
+#note {
+    width: 100%;
+    min-height: 80px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background-color: #FAF7F2;
+
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    
+    color:  #064E3B;
+
+    resize: none;
+
+    border: 2px solid transparent;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 0 0 5px rgba(6, 78, 59, 0.32);
+
+    transition: 0.2s ease;
+
+    margin: 14px 0px 14px;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#note:focus {
+
+    border-color: #ffffff;
+
+    outline: 4px solid #0d4f3c;
+
+    transform: scale(0.98);
+}
+
+#note::placeholder {
+    color: #064E3B;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.filter-row {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 4px;
+}
+
+.filter-btn {
+   
+    width: auto;
+
+    padding: 5px 5px;
+
+    border: 2px solid #064E3B;
+    border-radius: 2px;
+
+    background-color: #F6F1E8;
+
+    color: #064E3B;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.filter-btn.active {
+    color: white;
+    border-color: transparent;
+    background-color: #064e3b9f;
+}
+
+.filter-btn.Verlängertes-Wasserlassen {
+    min-width: max-content;
+}
+
+#entriesList {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    margin-top: 28px;
+    padding-bottom: 90px;
+}
+
+.entry-card {
+    width: 100%;
+
+    padding: 18px 20px;
+
+    resize: none;
+
+    border-radius: 4px;
+    border: 2px solid transparent;
+
+    box-sizing: border-box;
+
+    box-shadow:
+        0 0 0 4px #064e3b52;
+
+    transition: 0.2s ease;
+}
+
+.entry-date {
+    margin: 0 0 14px 0;
+
+    color: #064E3B;
+
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.entry-info {
+    margin: 10px 0;
+
+    color: #064E3B;
+
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.entry-info span {
+    font-weight: 800;
+}
+
+.delete-button {
+    margin-top: 14px;
+
+    padding: 4px 8px;
+
+    border: 2px solid #941615;
+    border-radius: 4px;
+
+    background-color: transparent;
+
+    color: #750f0f;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: #941615;
+    color: white;
+}
+
+.delete-button:active {
+    transform: scale(0.96);
+}
+
+.back-button {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(
+
+        #064E3B,
+        #064e3bec
+    );
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px rgba(6, 78, 59, 0.22);
+
+    transition: 0.2s ease;
+
+    z-index: 1000;
+}
+
+.back-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 20px rgba(6, 78, 59, 0.28);
+}
+
+.back-button:active {
+
+    transform: scale(0.97);
+}
+
+@media (max-width: 600px) {
+
+    .filter-row {
+        flex-wrap: nowrap;
+        gap: 3px;
+    }
+
+    .filter-btn {
+        padding: 4px 4px;
+        font-size: clamp(9px, 2.7vw, 13px);
+        white-space: nowrap;
+    }
+}
+
