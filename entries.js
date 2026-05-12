@@ -1,51 +1,96 @@
+// DOM Elemente
+
 const entriesList = document.getElementById("entriesList");
 const backButton = document.getElementById("backButton");
-
-
+const filterButtons = document.querySelectorAll(".filter-btn");
 
 // Bereits gespeicherte Einträge laden
+
 let entries = JSON.parse(localStorage.getItem("entries")) || [];
 
-// Bereits vorhandene Einträge direkt anzeigen 
-function renderEntries(filteredEntries = entries) {
+// Übersetzungstabelle
 
+const tagLabels = {
+    spritze: "Spritze",
+    medikamente: "Medikamente",
+    arztbesuch: "Arztbesuch",
+    zittern: "Zittern",
+    stress: "Stress",
+    blasenschwaeche: "Blasenschwäche",
+    "verlaengertes-wasserlassen": "Verlängertes Wasserlassen",
+    trinkverhalten: "Trinkverhalten"
+};
+
+// Einträge speichern
+
+function saveEntries() {
+    localStorage.setItem("entries", JSON.stringify(entries));
+}
+
+// Einträge rendern 
+
+function renderEntries(filteredEntries = entries) {
     entriesList.innerHTML = "";
 
-    filteredEntries.slice().reverse().forEach(function(entry, index) {
+    if (filteredEntries.length === 0) {
+        entriesList.innerHTML = `
+            <p class="empty-message">
+                Noch keine Einträge vorhanden.
+            </p>
+        `;
+
+        return;
+    }
+
+    filteredEntries.slice().reverse().forEach(function(entry) {
+        const readableTags = entry.tags
+            .map(function(tag) {
+                return tagLabels[tag] || tag;
+            })
+            .join(", ");
 
         const entryDiv = document.createElement("div");
 
         entryDiv.innerHTML = `
-             <div class="entry-card">
-                 <p class="entry-date">
-                     ${entry.date}
-                 </p>
-            
-                 <p class="entry-info">
+            <div class="entry-card">
+                <p class="entry-date">
+                    ${entry.date}
+                </p>
+
+                <p class="entry-info">
                     <span>Kategorien:</span>
-                    ${entry.tags.join(", ") || "Keine Kategorie"}
-                 </p>
+                    ${readableTags}
+                </p>
 
-                 <p class="entry-info">
+                <p class="entry-info">
                     <span>Notiz:</span>
-                     ${entry.note || "Keine Notiz"}
-                 </p>
+                    ${entry.note || "Keine Notiz"}
+                </p>
 
-                 <button onclick="deleteEntry(${entries.indexOf(entry)})" class="delete-button">
+                <button
+                    class="delete-button"
+                    data-index="${entries.indexOf(entry)}"
+                >
                     Löschen
                 </button>
-             </div>
+            </div>
         `;
 
         entriesList.appendChild(entryDiv);
+
+        const deleteButton = entryDiv.querySelector(".delete-button");
+
+        deleteButton.addEventListener("click", function() {
+            const index = deleteButton.dataset.index;
+
+            deleteEntry(index);
+        });
     });
 }
 
-// Filterfunktion 
+// Filterfunktion
+
 function filterEntries(tag, clickedButton) {
-
-    const filterButtons = document.querySelectorAll(".filter-btn");
-
     filterButtons.forEach(function(button) {
         button.classList.remove("active");
     });
@@ -64,19 +109,32 @@ function filterEntries(tag, clickedButton) {
     renderEntries(filtered);
 }
 
+// Eintrag löschen
 
 function deleteEntry(index) {
+    entries.splice(Number(index), 1);
 
-    // Eintrag aus Array entfernen
-    entries.splice(index, 1);
+    saveEntries();
 
-    // Local Storage aktualisieren
-    localStorage.setItem("entries", JSON.stringify(entries));
-
-    // Anzeige neu laden
     renderEntries();
 }
 
+// Klick-Events für alle Filterbuttons
 
-// direkt beim Laden alle Einträge anzeigen
+filterButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        const tag = button.dataset.tag;
+
+        filterEntries(tag, button);
+    });
+});
+
+// Zurück-Button
+
+backButton.addEventListener("click", function() {
+    window.location.href = "index.html";
+});
+
+// Einträge zu Beginn rendern
+
 renderEntries();

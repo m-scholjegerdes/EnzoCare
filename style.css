@@ -1,3 +1,13 @@
+/* Farbschema */
+:root {
+    --color-primary: #064E3B;
+    --color-secondary: rgba(6, 78, 59, 0.32);
+    --color-background: #f6f2ea;
+    --color-card: #FAF7F2;
+    --color-danger: #750f0f;
+}
+
+/* Grundeinstellungen */
 * {
     box-sizing: border-box;
 }
@@ -9,49 +19,50 @@ body {
     background-color: #f6f2ea;
 }
 
+/* Layout */
+
 .app-container {
     width: 100%;
-
     max-width: 470px;
-
     margin: 0 auto;
-
     overflow: visible;
-
     padding:
         clamp(12px, 2vw, 28px);
+}
+
+/* Überschriften und Texte */
+
+h1,
+h3 {
+    text-align: center;
+    color: var(--color-primary);
+    font-size: clamp(40px, 6vw, 54px);
 }
 
 h1 {
     margin: 0;
     padding-top: 10px;
-    text-align: center;
-    color:  #064E3B;
-    font-size:
-        clamp(40px, 6vw, 54px);
 }
 
 h2 {
     margin: 0 0 10px;
     padding-bottom: 5px;
     text-align: center;
-    color: #0d4f3c;
+    color: var(--color-primary);
     font-size: 14px;
 }
 
 h3 {
-    margin: 0 0 20px;    
+    margin: 0 0 20px;
     padding-top: 10px;
-    text-align: center;
-    color:  #064E3B;
-    font-size:
-        clamp(40px, 6vw, 54px);
 }
 
-p{
-    color: #0d4f3c;
+p {
+    color: var(--color-primary);
     font-size: 14px;
 }
+
+/* Bild-Buttons */
 
 .button-grid {
     display: flex;
@@ -77,32 +88,87 @@ p{
 
 .image-option input:checked + img {
     border-color: #ffffff;
-    outline: 4px solid #0d4f3c;
+    outline: 4px solid var(--color-primary);
     transform: scale(0.98);
 }
 
+/* Notizfeld */
+
+#note {
+    width: 100%;
+    min-height: 80px;
+    padding: 16px;
+    margin: 14px 0;
+
+    background-color: #FAF7F2;
+
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: var(--color-primary);
+    resize: none;
+
+    border: 2px solid transparent;
+    border-radius: 18px;
+
+    box-sizing: border-box;
+    box-shadow:
+        0 0 0 5px rgba(6, 78, 59, 0.32);
+
+    transition: 0.2s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+#note:focus {
+
+    border-color: #ffffff;
+    outline: 4px solid var(--color-primary);
+
+    transform: scale(0.98);
+}
+
+#note::placeholder {
+    color: var(--color-primary);
+}
+
+/* Fehlermeldung */
+
+#errorMessage {
+    min-height: 0;
+    margin: 0;
+
+    text-align: center;
+
+    color: var(--color-danger);
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+#errorMessage:not(:empty) {
+    margin-bottom: 14px;
+}
+
+/* Aktionsbuttons */
+
 .action-buttons {
     display: flex;
-    gap: 35px;
+    gap: 30px;
     width: 100%;
     margin-top: 0;
 }
 
 .action-buttons button {
-
     flex: 1;
 
-    padding: 14px 10px;
+    padding: 15px 10px;
 
     border: none;
     border-radius: 18px;
 
-    background: linear-gradient(
-
-        #064E3B,
-        #064e3bec
-    );
-
+    background-color: var(--color-primary);
     color: white;
 
     font-size: 14px;
@@ -117,7 +183,6 @@ p{
 }
 
 .action-buttons button:hover {
-
     transform: translateY(-2px);
 
     box-shadow:
@@ -125,75 +190,10 @@ p{
 }
 
 .action-buttons button:active {
-
     transform: scale(0.98);
 }
 
-#errorMessage {
-
-    min-height: 0;
-
-    margin: 0;
-
-    text-align: center;
-
-    color: #941615;
-
-    font-size: 15px;
-    font-weight: 700;
-
-    transition: 0.2s ease;
-}
-
-#errorMessage:not(:empty) {
-
-    margin-bottom: 14px;
-}
-
-#note {
-    width: 100%;
-    min-height: 80px;
-
-    padding: 16px;
-
-    border-radius: 18px;
-
-    background-color: #FAF7F2;
-
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    
-    color:  #064E3B;
-
-    resize: none;
-
-    border: 2px solid transparent;
-
-    box-sizing: border-box;
-
-    box-shadow:
-        0 0 0 5px rgba(6, 78, 59, 0.32);
-
-    transition: 0.2s ease;
-
-    margin: 14px 0px 14px;
-
-    appearance: none;
-    -webkit-appearance: none;
-}
-
-#note:focus {
-
-    border-color: #ffffff;
-
-    outline: 4px solid #0d4f3c;
-
-    transform: scale(0.98);
-}
-
-#note::placeholder {
-    color: #064E3B;
-}
+/* Filterbuttons */
 
 .filter-buttons {
     display: flex;
@@ -210,18 +210,14 @@ p{
 }
 
 .filter-btn {
-   
     width: auto;
-
     padding: 5px 5px;
 
-    border: 2px solid #064E3B;
+    border: 2px solid var(--color-primary);
     border-radius: 2px;
 
-    background-color: #F6F1E8;
-
-    color: #064E3B;
-
+    background-color: #F6F1E8;  
+    color: var(--color-primary);    
     font-size: 13px;
     font-weight: 700;
 
@@ -233,36 +229,33 @@ p{
 .filter-btn.active {
     color: white;
     border-color: transparent;
-    background-color: #064e3b9f;
+    background-color: #0d4f3cb0;
 }
 
-.filter-btn.Verlängertes-Wasserlassen {
+.filter-btn.verlaengertes-wasserlassen {
     min-width: max-content;
 }
+
+/* Einträge */
 
 #entriesList {
     display: flex;
     flex-direction: column;
     gap: 18px;
-
     margin-top: 28px;
     padding-bottom: 90px;
 }
 
 .entry-card {
     width: 100%;
-
     padding: 18px 20px;
 
-    resize: none;
-
-    border-radius: 4px;
     border: 2px solid transparent;
+    border-radius: 4px;
 
     box-sizing: border-box;
-
     box-shadow:
-        0 0 0 4px #064e3b52;
+        0 0 0 4px var(--color-secondary);
 
     transition: 0.2s ease;
 }
@@ -270,17 +263,15 @@ p{
 .entry-date {
     margin: 0 0 14px 0;
 
-    color: #064E3B;
-
+    color: var(--color-primary);
     font-size: 18px;
     font-weight: 800;
 }
 
 .entry-info {
-    margin: 10px 0;
+    margin: 14px 0;
 
-    color: #064E3B;
-
+    color: var(--color-primary);
     font-size: 16px;
     line-height: 1.4;
 }
@@ -289,17 +280,17 @@ p{
     font-weight: 800;
 }
 
+/* Löschbutton */
+
 .delete-button {
     margin-top: 14px;
-
     padding: 4px 8px;
 
-    border: 2px solid #941615;
+    border: 2px solid var(--color-danger);
     border-radius: 4px;
 
     background-color: transparent;
-
-    color: #750f0f;
+    color: var(--color-danger)
 
     font-size: 13px;
     font-weight: 800;
@@ -310,7 +301,7 @@ p{
 }
 
 .delete-button:hover {
-    background-color: #941615;
+    background-color: var(--color-danger);
     color: white;
 }
 
@@ -318,10 +309,10 @@ p{
     transform: scale(0.96);
 }
 
+/* Zurück-Button */
+
 .back-button {
-
     position: fixed;
-
     right: 20px;
     bottom: 20px;
 
@@ -330,12 +321,7 @@ p{
     border: none;
     border-radius: 8px;
 
-    background: linear-gradient(
-
-        #064E3B,
-        #064e3bec
-    );
-
+    background-color: var(--color-primary);
     color: white;
 
     font-size: 14px;
@@ -352,7 +338,6 @@ p{
 }
 
 .back-button:hover {
-
     transform: translateY(-2px);
 
     box-shadow:
@@ -360,9 +345,18 @@ p{
 }
 
 .back-button:active {
-
     transform: scale(0.97);
 }
+
+/* Leere Eintragsliste */
+
+.empty-message {
+    text-align: center;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Responsive Design */
 
 @media (max-width: 600px) {
 
@@ -377,4 +371,3 @@ p{
         white-space: nowrap;
     }
 }
-

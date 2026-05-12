@@ -3,51 +3,112 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta 
+        name="viewport" 
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>EnzoCare</title>
 
     <link rel="stylesheet" href="style.css">
-</head>
 
+</head>
 <body>
 
     <main class="app-container">
 
         <h3>Einträge</h3>
 
-        <!-- Filterbuttons -->
+        <!-- Filter -->
         <div class="filter-buttons">
 
             <div class="filter-row">
-                <button onclick="filterEntries('all', this)" class="filter-btn all">Alle</button>
-                <button onclick="filterEntries('Spritze', this)" class="filter-btn Spritze">Spritze</button>
-                <button onclick="filterEntries('Medikamente', this)" class="filter-btn Medikamente">Medikamente</button>            
-                <button onclick="filterEntries('Arztbesuch', this)" class="filter-btn Arztbesuch">Arztbesuch</button>
-                <button onclick="filterEntries('Zittern', this)" class="filter-btn Zittern">Zittern</button>  
-                <button onclick="filterEntries('Stress', this)" class="filter-btn Stress">Stress</button>
+
+                <button 
+                    class="filter-btn all"
+                    data-tag="all"
+                >
+                    Alle
+                </button>
+
+                <button 
+                    class="filter-btn spritze"
+                    data-tag="spritze"
+                >
+                    Spritze
+                </button>
+                
+                <button
+                    class="filter-btn medikamente"
+                    data-tag="medikamente"
+                >
+                    Medikamente
+                </button>
+
+                <button
+                    class="filter-btn arztbesuch"
+                    data-tag="arztbesuch"
+                >
+                    Arztbesuch
+                </button>
+
+                <button
+                    class="filter-btn zittern"
+                    data-tag="zittern"
+                >
+                    Zittern
+                </button>
+
+                <button
+                    class="filter-btn stress"
+                    data-tag="stress"
+                >
+                    Stress
+                </button>
+
             </div>
                 
             <div class="filter-row">
 
-                
-                <button onclick="filterEntries('Blasenschwäche', this)" class="filter-btn Blasenschwäche">Blasenschwäche</button>            
-                <button onclick="filterEntries('Verlängertes Wasserlassen', this)" class="filter-btn Verlängertes-Wasserlassen">verlängertes Wasserlassen</button>
-                <button onclick="filterEntries('Trinkverhalten', this)" class="filter-btn Trinkverhalten">Trinkverhalten</button>
+                <button
+                    class="filter-btn blasenschwaeche"
+                    data-tag="blasenschwaeche"
+                >
+                    Blasenschwäche
+                </button>
+
+                <button
+                    class="filter-btn verlaengertes-wasserlassen"
+                    data-tag="verlaengertes-wasserlassen"
+                >
+                    Verlängertes Wasserlassen
+                </button>
+
+                <button
+                    class="filter-btn trinkverhalten"
+                    data-tag="trinkverhalten"
+                >
+                    Trinkverhalten
+                </button>
             </div>
 
         </div>
 
+        <!-- Einträge -->
+
         <div id="entriesList"></div>
 
     </main>
-    <!-- Zurück-Button-->
-    <button class="back-button" onclick="window.location.href='index.html'">
+
+    <!-- Zurück-Button -->
+    <button
+        class="back-button"
+        id="backButton"
+    >
         Zurück
     </button>
 
     <script src="entries.js"></script>
-
 
 </body>
 

@@ -3,84 +3,81 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <title>EnzoCare</title>
+
         <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-
-        <main class="app-container">
-                
+         <main class="app-container">  
             <h1>EnzoCare</h1>
-            <h2>Gesundheitstagebuch bei Morbus Addison </h2>
+            <h2>Gesundheitstagebuch bei Morbus Addison</h2>
             
-
-            <!-- Auswahlfelder -->
             <form id="entryForm">
-                <div class="button-grid">
 
+                <!-- Kategorieauswahl -->
+                <div class="button-grid">
                     <label class="image-option">
-                        <input type="checkbox" value="Spritze">
+                        <input type="checkbox" value="spritze">
                         <img src="buttons/spritze.png" alt="Spritze">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Medikamente">
+                        <input type="checkbox" value="medikamente">
                         <img src="buttons/medikamente.png" alt="Medikamente">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Arztbesuch">
+                        <input type="checkbox" value="arztbesuch">
                         <img src="buttons/arztbesuch.png" alt="Arztbesuch">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Zittern">
+                        <input type="checkbox" value="zittern">
                         <img src="buttons/zittern.png" alt="Zittern">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Stress">
+                        <input type="checkbox" value="stress">
                         <img src="buttons/stress.png" alt="Stress">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Blasenschwäche">
+                        <input type="checkbox" value="blasenschwaeche">
                         <img src="buttons/blasenschwaeche.png" alt="Blasenschwäche">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Verlängertes Wasserlassen">
+                        <input type="checkbox" value="verlaengertes-wasserlassen">
                         <img src="buttons/verlaengertes-wasserlassen.png" alt="Verlängertes Wasserlassen">
                     </label>
 
                     <label class="image-option">
-                        <input type="checkbox" value="Trinkverhalten">
+                        <input type="checkbox" value="trinkverhalten">
                         <img src="buttons/trinkverhalten.png" alt="Trinkverhalten">
                     </label>
                 </div>
 
-                <!-- Notizfeld-->
+                <!-- Notizfeld -->
                 <textarea id="note" placeholder="Notizen..."></textarea>
 
-               <div id="errorMessage"></div>
+                <!-- Fehlermeldung -->
+                <div id="errorMessage"></div>
               
+                <!-- Aktionsfelder -->
                 <div class="action-buttons">
-                    <!-- Speicherbutton-->
                     <button type="submit">
                         Speichern
                     </button>
             
-                    <!-- Anzeigebutton -->
-                    <button type="button" onclick="window.location.href='entries.html'">
+                    <button type="button" id="showEntriesButton">
                         Einträge anzeigen
                     </button>
-
                 </div>
             </form>
         </main>
 
         <script src="script.js"></script>
-
     </body>
 </html>
