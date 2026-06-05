@@ -7,6 +7,22 @@
 const EnzoCareStorage = (function () {
     const STORAGE_KEY = "entries";
 
+    function createId() {
+        if (
+            window.crypto &&
+            typeof window.crypto.randomUUID === "function"
+        ) {
+            return window.crypto.randomUUID();
+        }
+
+        return (
+            "entry-" +
+            Date.now() +
+            "-" +
+            Math.random().toString(16).slice(2)
+        );
+    }
+
     function getEntries() {
         try {
             const storedEntries =
@@ -38,7 +54,45 @@ const EnzoCareStorage = (function () {
         }
     }
 
+    function saveEntries(entries) {
+        try {
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(entries)
+            );
+
+            return true;
+        } catch (error) {
+            console.error(
+                "Die Einträge konnten nicht gespeichert werden:",
+                error
+            );
+
+            return false;
+        }
+    }
+
+    function createEntry(entryData) {
+        const entries = getEntries();
+
+        const entry = {
+            id: createId(),
+            ...entryData
+        };
+
+        entries.push(entry);
+
+        const wasSaved = saveEntries(entries);
+
+        if (!wasSaved) {
+            return null;
+        }
+
+        return entry;
+    }
+
     return {
-        getEntries
+        getEntries,
+        createEntry
     };
 })();

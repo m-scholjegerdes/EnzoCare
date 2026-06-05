@@ -4,11 +4,6 @@ const form = document.getElementById("entryForm");
 const errorMessage = document.getElementById("errorMessage");
 const showEntriesButton = document.getElementById("showEntriesButton");
 
-// Gespeicherte Einträge aus WebStorage laden oder leere Liste erstellen
-
-let entries =
-    JSON.parse(localStorage.getItem("entries")) || [];
-
 // Übersetzungstabelle 
 
 const tagLabels = {
@@ -30,16 +25,6 @@ const tagLabels = {
 
     trinkverhalten: "Trinkverhalten"
 };
-
-// Speichern im Browser
-
-function saveEntries() {
-
-    localStorage.setItem(
-        "entries",
-        JSON.stringify(entries)
-    );
-}
 
 // Navigation zur Einträge-Seite
 
@@ -79,21 +64,26 @@ form.addEventListener("submit", function(event) {
     const note = 
         document.getElementById("note").value;
 
-    const entry = {
+   const currentDate = new Date();
 
-        date: new Date().toLocaleString("de-DE", {
-            
-            dateStyle: "short",
-            timeStyle: "short"
-        }),
+const entry = EnzoCareStorage.createEntry({
+    date: currentDate.toLocaleString("de-DE", {
+        dateStyle: "short",
+        timeStyle: "short"
+    }),
 
-        tags,
-        note
-    };
+    occurredAt: currentDate.toISOString(),
 
-    entries.push(entry);
+    tags,
+    note
+});
 
-    saveEntries();
+if (!entry) {
+    errorMessage.textContent =
+        "Der Eintrag konnte nicht gespeichert werden.";
 
-    form.reset();
+    return;
+}
+
+form.reset();
 });
