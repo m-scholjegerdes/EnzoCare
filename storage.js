@@ -43,16 +43,35 @@ const EnzoCareStorage = (function () {
                 return [];
             }
 
-            return parsedEntries;
-        } catch (error) {
-            console.error(
-                "Die Einträge konnten nicht geladen werden:",
-                error
-            );
+            let entriesWereUpdated = false;
 
-            return [];
-        }
-    }
+            const entries = parsedEntries.map(function (entry) {
+                if (entry.id) {
+                    return entry;
+                }
+
+                entriesWereUpdated = true;
+
+                return {
+                    ...entry,
+                    id: createId()
+                };
+            });
+
+            if (entriesWereUpdated) {
+                saveEntries(entries);
+            }
+
+            return entries;
+                    } catch (error) {
+                        console.error(
+                            "Die Einträge konnten nicht geladen werden:",
+                            error
+                        );
+
+                        return [];
+                    }
+                }
 
     function saveEntries(entries) {
         try {
